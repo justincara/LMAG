@@ -1,0 +1,79 @@
+body{
+ background: radial-gradient(ellipse farthest-corner at left top, #000000 0%, #000000 8%, #000000 25%, #000000 62.5%, #000000 100%);
+  color: white;
+  height: 100%;
+  font-family: "lora", serif;
+  font-optical-sizing: auto;
+
+
+}
+
+.text_shadow{
+  /* -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #efc763; */
+  text-transform: uppercase;
+	background: linear-gradient(to right, #ba6702 0%, #e4b233 50%,#ba6702 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.allbtn {
+ background-color: #000000;
+ border: 1px solid #e4b233;
+ padding: 12px 27px !important;
+ color: #e4b233 !important;
+ 
+}
+.allbtn:hover {
+ background-color: #e4b233;
+ border: 1px solid #e4b233;
+ color: #ffffff !important;
+
+
+}
+.widthAbout{
+  width: 70%;
+  margin: auto;
+  border: 1px solid #e4b233;
+  padding: 42px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 22px #e4b233;
+}
+.widthAllocation{
+  width: 80%;
+  margin: auto;
+  border: 1px solid #e4b233;
+  padding: 42px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 22px #e4b233;
+ 
+}
+
+.borderpay{
+  border: 1px solid #e4b233;
+  border-radius: 19px;
+}
+ul.a {
+  list-style-type: circle;
+}
+ul li{
+  margin-top: 12px;
+}
+
+@media (max-width: 1000px) { 
+  .widthAbout{
+    width: 100%;
+    margin: auto;
+    border: 1px solid #e4b233;
+    padding: 42px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 22px #e4b233;
+  }
+  .widthAllocation{
+    width: 100%;
+    margin: auto;
+    border: 1px solid #e4b233;
+    padding: 42px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 22px #e4b233;
+  }
+}
