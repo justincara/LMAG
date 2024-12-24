@@ -20,14 +20,17 @@ window.Buffer = window.Buffer || Buffer;
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
 
+const devnet = true;
+export const endpoint = devnet
+  ? "https://api.devnet.solana.com"
+  : "https://solana-mainnet.g.alchemy.com/v2/jWM7-yAmW7jwK1HwFmoelDNwslFAhBh3";
+
+
 export const Wallet = ({ children }) => {
   // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
   const network = WalletAdapterNetwork.Mainnet;
 
   // const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
-  // const endpoint = "https://solana-mainnet.g.alchemy.com/v2/jWM7-yAmW7jwK1HwFmoelDNwslFAhBh3";
-  const endpoint = "https://api.devnet.solana.com";
 
   const wallets = useMemo(
     () => [new PhantomWalletAdapter(), new SolflareWalletAdapter()],
