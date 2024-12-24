@@ -93,7 +93,7 @@ function Buy() {
     const tokens = amount?.tokens * 10 ** decimals;
     const userBalance = balance * LAMPORTS_PER_SOL;
 
-    if (programData?.tokensBalance < tokens || lamports < userBalance) {
+    if (programData?.tokensBalance < tokens || lamports > userBalance) {
       console.error("invalid amount");
       return;
     }
@@ -161,28 +161,38 @@ function Buy() {
     }
   };
 
-  const converterSolToTokens = ({ value }) => {
+  const converterSolToTokens = (value) => {
+    const lamports = value * LAMPORTS_PER_SOL;
+    const tokensForSol = (
+      (lamports * programData?.tokensPerLamport) /
+      10 ** decimals
+    ).toFixed(2);
+    return tokensForSol;
+  };
+
+  const converterTokensToSol = (value) => {
+    const tokensamount = value * 10 ** decimals;
+    const solFortokens = (
+      tokensamount /
+      programData?.tokensPerLamport /
+      LAMPORTS_PER_SOL
+    ).toFixed(9);
+    return solFortokens;
+  };
+
+  const sendAmountHandler = ({ value }) => {
     if (value.slice(value.indexOf(".")).length <= 10) {
-      const lamports = value * LAMPORTS_PER_SOL;
-      const tokensAmount = (
-        (lamports * programData?.tokensPerLamport) /
-        10 ** decimals
-      ).toFixed(2);
-      setAmount({ sol: value.replace(/^0+/, ''), tokens: tokensAmount });
+      const tokensForSol = converterSolToTokens(value);
+      setAmount({ sol: value.replace(/^0+/, ""), tokens: tokensForSol });
     } else {
       setAmount({ ...amount });
     }
   };
 
-  const converterTokensToSol = ({ value }) => {
+  const receiveAmountHandler = ({ value }) => {
     if (value.slice(value.indexOf(".")).length <= 3) {
-      const tokensamount = value * 10 ** decimals;
-      const sol = (
-        tokensamount /
-        programData?.tokensPerLamport /
-        LAMPORTS_PER_SOL
-      ).toFixed(9);
-      setAmount({ sol, tokens: value.replace(/^0+/, '') });
+      const solFortokens = converterTokensToSol(value);
+      setAmount({ sol: solFortokens, tokens: value.replace(/^0+/, "") });
     } else {
       setAmount({ ...amount });
     }
@@ -227,15 +237,20 @@ function Buy() {
                   <p className="text-sm">Tokens Sold</p>
                   <p className="text-lg font-bold">
                     {programData?.totalSold / (10 ** decimals).toFixed(decimals)} /{" "}
-                    {programData?.tokensBalance / 10 ** decimals}
+                    {(Number(programData?.tokensBalance) +
+                      Number(programData?.totalSold)) /
+                      10 ** decimals}
                   </p>
                 </div>
                 <div>
                   <p className="text-sm">SOL Raised</p>
                   <p className="text-lg font-bold">
                     {(programData?.lamportsReceived / LAMPORTS_PER_SOL).toFixed(9)} /{" "}
-                    {(programData?.tokensPerLamport * programData?.tokensBalance) /
-                      LAMPORTS_PER_SOL}
+                    {converterTokensToSol(
+                      (Number(programData?.tokensBalance) +
+                        Number(programData?.totalSold)) /
+                        10 ** decimals
+                    )}
                   </p>
                 </div>
               </div>
@@ -249,7 +264,7 @@ function Buy() {
                 className="bg-transparent text-white w-full outline-none"
                 placeholder="Enter amount"
                 value={amount?.sol}
-                onChange={(e) => converterSolToTokens(e.target)}
+                onChange={(e) => sendAmountHandler(e.target)}
               />
               <img src={sol} width={50} alt="SOL Logo" className="ml-2" />
             </div>
@@ -262,7 +277,7 @@ function Buy() {
                 className="bg-transparent text-white w-full outline-none"
                 placeholder="Receive amount"
                 value={amount?.tokens}
-                onChange={(e) => converterTokensToSol(e.target)}
+                onChange={(e) => receiveAmountHandler(e.target)}
               />
               <img src={lmag} width={50} alt="BBM Logo" className="ml-2" />
             </div>
