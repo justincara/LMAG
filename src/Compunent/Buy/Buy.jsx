@@ -39,6 +39,7 @@ function Buy() {
   const [balance, setBalance] = useState();
   const [programData, setProgramData] = useState();
   const [amount, setAmount] = useState();
+  const [txSig, setTxSig] = useState();
 
   const getBalance = () => {
     connection.getBalance(publicKey).then((balance) => {
@@ -99,7 +100,6 @@ function Buy() {
     }
 
     try {
-      setAmount({ sol: 0, tokens: 0 });
       const solAmount = new BN(lamports);
       const { account, ataTx } = await getOrCreateUserAtaInstruction(
         new PublicKey(icoMint),
@@ -131,7 +131,15 @@ function Buy() {
         connection
       );
       console.log({ txSig });
-      fetchProgramData();
+      setAmount({ sol: 0, tokens: 0 });
+      // for confirm transaction
+      const latestBlockHash = await connection.getLatestBlockhash();
+      await connection.confirmTransaction({
+        blockhash: latestBlockHash.blockhash,
+        lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
+        signature: txSig,
+      });
+      setTxSig(txSig);
     } catch (error) {
       console.error("===> Error", error);
     }
@@ -203,7 +211,7 @@ function Buy() {
       getBalance();
     }
     fetchProgramData();
-  }, [publicKey]);
+  }, [publicKey, txSig]);
 
   return (
     <div className="container">
@@ -286,6 +294,7 @@ function Buy() {
             <button
               className="allbtn text-white py-2 px-4 rounded w-full mb-4"
               onClick={() => buyTokens()}
+              disabled={!amount?.sol || !amount?.tokens}
             >
               BUY
             </button>
