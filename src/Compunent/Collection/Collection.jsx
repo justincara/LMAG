@@ -1,69 +1,96 @@
 import React from "react";
-import logo from "../assets/logo.jpeg";
-import coll1 from "../assets/coool1.jpeg";
-import coll2 from "../assets/coool2.jpeg";
+import { Box, Typography } from "@mui/material";
+import coll1 from "../assets/cool1.webp";
+import coll2 from "../assets/cool2.webp";
 
 function Collection() {
   return (
-    <div className="container">
-      <h1 className="text-3xl md:text-5xl font-bold my-5 text-center mb-5 text_shadow text-yellow-500">
+    <Box
+      sx={{
+        backgroundColor: "#000",
+        color: "#fff",
+        textAlign: "center",
+        py: 6,
+        marginTop: "50px",
+        padding: "25px",
+      }}
+    >
+      {/* Heading */}
+      <Typography
+        variant="h3"
+        sx={{
+          fontFamily: "Zen Dots, sans-serif",
+          fontSize: {
+            xs: "40px",
+            sm: "45px",
+            md: "64px",
+          },
+          fontWeight: 400,
+          lineHeight: {
+            xs: "50px",
+            sm: "55px",
+            md: "76.8px",
+          },
+          textAlign: "center",
+          marginBottom: 4,
+        }}
+      >
         LMAG Coin Art Collection
-      </h1>
-      <div className="row">
-        <div className="col-12 col-md-6 col-lg-3 ">
-          {" "}
-          <img
-            src={coll1}
-            alt="Pepe the frog sitting on a throne with gold coins around"
-            className="w-full max-w-md mx-auto rounded-4 mt-2"
-            style={{
-              height:"45vh",
-              border: "1px solid #e3ab1e",
-              boxShadow: "0px 0px 15px  #e3ab1e",
-            }}
-          />
-        </div>
-        <div className="col-12 col-md-6 col-lg-3">
-          {" "}
-          <img
-            src={coll2}
-            alt="Pepe the frog sitting on a throne with gold coins around"
-            className="w-full max-w-md mx-auto rounded-4 mt-2"
-            style={{
-              height:"45vh",
-              border: "1px solid #e3ab1e",
-              boxShadow: "0px 0px 15px  #e3ab1e",
-            }}
-          />
-        </div>
-        <div className="col-12 col-md-6 col-lg-3">
-          {" "}
-          <img
-            src={coll1}
-            alt="Pepe the frog sitting on a throne with gold coins around"
-            className="w-full max-w-md mx-auto rounded-4 mt-2"
-            style={{
-              height:"45vh",
-              border: "1px solid #e3ab1e",
-              boxShadow: "0px 0px 15px  #e3ab1e",
-            }}
-          />
-        </div>
-        <div className="col-12 col-md-6 col-lg-3">
-          {" "}
-          <img
-            src={coll2}
-            alt="Pepe the frog sitting on a throne with gold coins around"
-            className="w-full max-w-md mx-auto rounded-4 mt-2"
-            style={{
-              height:"45vh",
-              border: "1px solid #e3ab1e",
-              boxShadow: "0px 0px 15px  #e3ab1e",
-            }}
-          />
-        </div>
-      </div>
-    </div>
+      </Typography>
+
+      {/* Image Container */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 4,
+        }}
+      >
+        {/* First Image */}
+        <Box
+          component="img"
+          src={coll1}
+          alt="Collection 1"
+          sx={{
+            width: {
+              xs: "300px", 
+
+              sm: "420px", 
+            },
+            height: {
+              xs: "500px",
+              sm: "610px",
+            },
+            border: "4px solid #EFBF04",
+            // objectFit: "contain",
+          }}
+        />
+        {/* Second Image */}
+        <Box
+          component="img"
+          src={coll2}
+          alt="Collection 2"
+          sx={{
+            width: {
+              xs: "300px", 
+              sm: "420px", 
+            },
+            height: {
+              xs: "500px",
+              sm: "610px", 
+            },
+            border: "4px solid #EFBF04",
+            // objectFit: "contain",
+          }}
+        />
+      </Box>
+
+    </Box>
   );
 }
 
