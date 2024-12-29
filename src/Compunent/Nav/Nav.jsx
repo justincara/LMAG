@@ -40,7 +40,7 @@ function Nav() {
                         className="block w-full allbtn text-white font-bold py-2 px-4 rounded-full mt-2"
                         style={{ backgroundColor: '#121212' }}
                     >
-                        Buy LMAG
+                        <a href="#roadmap" >Buy LMAG</a>
                     </button>
                 </div>
             )}
