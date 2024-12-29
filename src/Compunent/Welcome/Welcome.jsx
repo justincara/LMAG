@@ -106,7 +106,7 @@ function Welcome() {
             width: {
               xs: "350px",
               sm: "350px",
-              md: "450px",
+              md: "600px",
             },
             height: "auto", 
             opacity: fadeIn ? 1 : 0,
