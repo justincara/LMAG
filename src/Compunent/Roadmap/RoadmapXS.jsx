@@ -43,7 +43,7 @@ const RoadmapXS = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black p-6">
+    <div className="min-h-screen bg-black p-6" style={{ marginTop: '150px'}}>
       <div className="max-w-xl mx-auto">
         <h1 className="text-3xl font-bold text-white mb-8 text-center">
           LMAG Roadmap

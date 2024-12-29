@@ -11,19 +11,21 @@ function About() {
         backgroundColor: "#000", 
         color: "#fff",
         py: 6,
-        px: 4,
+        // px: 4,
         textAlign: "center",
-        padding: '50px',
+        paddingLeft: '20px',
+        paddingRight: '20px',
         margin: '75px 0'
       }}
+      id="about"
     >
       <Typography
         variant="h3"
         sx={{
           fontFamily: "Zen Dots, sans-serif",
           fontSize: {
-            xs: "28px",
-            sm: "36px",
+            xs: "32px",
+            sm: "32px",
             md: "48px",
           },
           fontWeight: 400,
@@ -37,9 +39,9 @@ function About() {
         variant="body1"
         sx={{
           fontFamily: "Lora, serif",
-          fontSize: "20px",
+          fontSize: {xs: "14px", sm: "14px", md: "20px"},
           fontWeight: 400,
-          lineHeight: "25.6px",
+          lineHeight: 1.6,
           textAlign: "center",
           maxWidth: "90%",
           margin: "0 auto 4rem",
@@ -55,45 +57,102 @@ function About() {
 
       <Grid
         container
-        spacing={2}
+        spacing={2} // Adds uniform spacing between items
         sx={{
+          display: "flex",
           justifyContent: "center",
+          alignItems: "center",
+          margin: "0 auto", // Centers the grid within its container
+          paddingLeft: { xs: '50px', sm: '50px', md: '50px' },
+          paddingRight: { xs: '75px', sm: '50px', md: '75px' },
+          maxWidth: "1400px", // Optional: limits the overall width of the grid for larger screens
         }}
       >
-        <Grid item xs={12} sm={6} md={6}>
+        {/* First Image - Occupies 50% of the screen */}
+        <Grid
+          item
+          xs={12}
+          md={4}
+          lg={6}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: '0'
+          }}
+        >
           <Box
             component="img"
             src={Escorted}
             alt="Escorted Image"
             sx={{
               width: "100%",
+              maxWidth: "750px", // Upper size limit
+              minWidth: "250px", // Lower size limit
               height: "400px",
+              objectFit: "cover",
             }}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+
+        {/* Second Image - Occupies 25% of the screen */}
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={4}
+          lg={3}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: '0'
+          }}
+        >
           <Box
             component="img"
             src={SmilingPortrait}
             alt="Smiling Portrait"
             sx={{
               width: "100%",
+              maxWidth: "350px", // Upper size limit
+              minWidth: {xs: '250px', sm: '250px', md: '150px'}, // Lower size limit
               height: "400px",
+              objectFit: "cover",
             }}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+
+        {/* Third Image - Occupies 25% of the screen */}
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={4}
+          lg={3}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: '0'
+          }}
+        >
           <Box
             component="img"
             src={PostArrest}
             alt="Post Arrest"
             sx={{
               width: "100%",
+              maxWidth: "350px", // Upper size limit
+              minWidth: {xs: '250px', sm: '250px', md: '150px'}, // Lower size limit
               height: "400px",
+              objectFit: "cover",
             }}
           />
         </Grid>
       </Grid>
+
+
     </Box>
   );
 }

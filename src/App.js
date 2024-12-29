@@ -11,7 +11,7 @@ import { Wallet } from "./Compunent/context/wallet";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ lineHeight: 1.6 }}>
       <Wallet>
         <Nav />
         <Welcome />
@@ -23,7 +23,7 @@ function App() {
         <Footer />
       </Wallet>
     </div>
-  );
+  ); 
 }
 
 export default App;

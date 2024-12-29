@@ -65,11 +65,11 @@ const Roadmap = () => {
   if (isXS) return <RoadmapXS />;
 
   return (
-    <div className="min-h-screen bg-black p-8" style={{ paddingTop: "100px" }}>
+    <div id="roadmap" className="min-h-screen bg-black p-8" style={{ paddingTop: "100px", marginTop: '125px' }}>
       <div className="max-w-4xl mx-auto">
         <h1
           className="text-4xl font-bold text-white mb-20 text-center"
-          style={{ fontSize: "72px", paddingBottom: "40px" }}
+          style={{ fontSize: {xs: '32px', sm: '32px', md: '64px'}, paddingBottom: "40px" }}
         >
           LMAG Roadmap
         </h1>
@@ -157,7 +157,7 @@ const Roadmap = () => {
                   }`}
                   style={{
                     fontSize: "18px",
-                    lineHeight: "1.6",
+                    lineHeight: 1.6,
                     transition: "opacity 0.3s ease-in-out",
                   }}
                 >

@@ -11,6 +11,7 @@ function CommunitySection() {
         padding: "25px",
         py: 6,
         marginBottom: "100px",
+        marginTop: '75px'
       }}
     >
       <Typography
@@ -18,12 +19,12 @@ function CommunitySection() {
         sx={{
           fontFamily: "Zen Dots, sans-serif",
           fontSize: {
-            xs: "40px",
-            sm: "45px",
+            xs: "32px",
+            sm: "32px",
             md: "64px", 
           },
           fontWeight: 400,
-          lineHeight: "76.8px",
+          lineHeight: 1.6,
           textAlign: "center",
           textUnderlinePosition: "from-font",
           textDecorationSkipInk: "none",
@@ -33,11 +34,11 @@ function CommunitySection() {
         Join the LMAG Community
       </Typography>
       <Typography
-        variant="subtitle1"
+        variant="paragraph"
         sx={{
           fontFamily: "Lora, sans-serif",
-          fontWeight: 700,
-          marginBottom: 4,
+          fontWeight: 400,
+          fontSize: '18px'
         }}
       >
         Be a part of the LMAG family. Share your voice and support the movement!
@@ -51,6 +52,7 @@ function CommunitySection() {
           },
           justifyContent: "center",
           alignItems: "center",
+          marginTop: '25px',
           gap: 2,
         }}
       >

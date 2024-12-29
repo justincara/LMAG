@@ -14,6 +14,7 @@ function Collection() {
         marginTop: "50px",
         padding: "25px",
       }}
+      id="collection"
     >
       {/* Heading */}
       <Typography
@@ -21,8 +22,8 @@ function Collection() {
         sx={{
           fontFamily: "Zen Dots, sans-serif",
           fontSize: {
-            xs: "40px",
-            sm: "45px",
+            xs: "32px",
+            sm: "32px",
             md: "64px",
           },
           fontWeight: 400,
@@ -49,6 +50,7 @@ function Collection() {
           justifyContent: "center",
           alignItems: "center",
           gap: 4,
+          marginTop: { xs: "25px", sm: "50px", md: "75px" },
         }}
       >
         {/* First Image */}
@@ -64,7 +66,7 @@ function Collection() {
             },
             height: {
               xs: "500px",
-              sm: "610px",
+              sm: "692px",
             },
             border: "4px solid #EFBF04",
             // objectFit: "contain",
@@ -82,7 +84,7 @@ function Collection() {
             },
             height: {
               xs: "500px",
-              sm: "610px", 
+              sm: "692px", 
             },
             border: "4px solid #EFBF04",
             // objectFit: "contain",

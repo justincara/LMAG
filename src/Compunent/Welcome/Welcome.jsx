@@ -65,14 +65,15 @@ function Welcome() {
         }}
       >
         {/* Text Content */}
-        <Box sx={{marginBottom: {xs: "-85px", sm: "-85px", md: "-90px"}}}>
+        <Box sx={{marginBottom: {xs: "-85px", sm: "-85px", md: '-120px', lg: "-130px"}}}>
           <Typography
             sx={{
               fontFamily: "Zen Dots, sans-serif",
               fontSize: {
-                xs: "28px",
-                sm: "28px",
-                md: "28px",
+                xs: "24px",
+                sm: "24px",
+                md: '28px',
+                lg: "36px",
               },
               color: "#fff",
             }}
@@ -84,9 +85,10 @@ function Welcome() {
             sx={{
               fontFamily: "Zen Dots, sans-serif",
               fontSize: {
-                xs: "64px",
-                sm: "64px",
-                md: "72px",
+                xs: "56px",
+                sm: "56px",
+                md: '84px',
+                lg: "102px",
               },
               fontWeight: 700,
               color: "#EFBF04",
@@ -108,7 +110,7 @@ function Welcome() {
               sm: "350px",
               md: "600px",
             },
-            height: "auto", 
+            maxHeight: {md: '300px', lg: '300px'}, 
             opacity: fadeIn ? 1 : 0,
             transition: "opacity 2s ease-in",
             marginTop: "16px", 

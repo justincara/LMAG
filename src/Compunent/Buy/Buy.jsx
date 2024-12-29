@@ -238,18 +238,19 @@ function Buy() {
         md: "50px",  
       },
     }}
+    id="investing"
     >
       <Typography
         variant="h3"
         sx={{
           fontFamily: "Zen Dots, sans-serif",
           fontSize: {
-            xs: "40px",
-            sm: "45px",
+            xs: "32px",
+            sm: "32px",
             md: "64px", 
           },
           fontWeight: 400,
-          lineHeight: "76.8px",
+          lineHeight: 1.6,
           textAlign: "center",
           textUnderlinePosition: "from-font",
           textDecorationSkipInk: "none",
@@ -300,7 +301,7 @@ function Buy() {
                 md: "40px", 
               },
               fontWeight: 400,
-              lineHeight: "48px",
+              lineHeight: 1.6,
               textAlign: "left",
               marginBottom: 2,
             }}
@@ -327,7 +328,7 @@ function Buy() {
                 fontFamily: "Lora, serif",
                 fontSize: "20px",
                 fontWeight: 400,
-                lineHeight: "25.6px",
+                lineHeight: 1.6,
                 textAlign: "center",
                 borderRadius: "40px",
                 paddingX: 2,
@@ -349,7 +350,7 @@ function Buy() {
                 fontFamily: "Lora, serif",
                 fontSize: "20px",
                 fontWeight: 400,
-                lineHeight: "25.6px",
+                lineHeight: 1.6,
                 textAlign: "center",
                 borderRadius: "40px",
                 paddingX: 2,
@@ -414,7 +415,7 @@ function Buy() {
                   fontFamily: "Lora, serif",
                   fontSize: "16px",
                   fontWeight: 700,
-                  lineHeight: "20.48px",
+                  lineHeight: 1.6,
                   textAlign: "left",
                   textUnderlinePosition: "from-font",
                   textDecorationSkipInk: "none",
@@ -439,7 +440,7 @@ function Buy() {
                     fontFamily: "Lora, serif",
                     fontSize: "16px",
                     fontWeight: 400,
-                    lineHeight: "20.48px",
+                    lineHeight: 1.6,
                     textAlign: "left",
                     textUnderlinePosition: "from-font",
                     textDecorationSkipInk: "none",
@@ -466,7 +467,7 @@ function Buy() {
                   fontFamily: "Lora, serif",
                   fontSize: "16px",
                   fontWeight: 700,
-                  lineHeight: "20.48px",
+                  lineHeight: 1.6,
                   textAlign: "left",
                   textUnderlinePosition: "from-font",
                   textDecorationSkipInk: "none",
@@ -488,7 +489,7 @@ function Buy() {
                     fontFamily: "Lora, serif",
                     fontSize: "16px",
                     fontWeight: 400,
-                    lineHeight: "20.48px",
+                    lineHeight: 1.6,
                     textAlign: "left",
                     textUnderlinePosition: "from-font",
                     textDecorationSkipInk: "none",
@@ -565,8 +566,8 @@ function Buy() {
               style={{
                 border: "4px solid #EFBF04",
                 borderRadius: "50%",
-                width: "346px",
-                height: "346px",
+                width: {xs: '275px', sm: '300px', md: '346px'},
+                height: {xs: '275px', sm: '300px', md: '346px'},
                 objectFit: "cover",
               }}
             />
@@ -583,7 +584,7 @@ function Buy() {
                 md: "40px", 
               },
               fontWeight: 400,
-              lineHeight: "76.8px",
+              lineHeight: 1.6,
               textAlign: "center",
               textUnderlinePosition: "from-font",
               textDecorationSkipInk: "none",
@@ -603,18 +604,13 @@ function Buy() {
               }}
             >
               <li>
-                Presale Allocation:{" "}
-                <strong style={{ color: "#E3AB1E" }}>5%</strong>
+              Pre sale - <strong style={{ color: "#E3AB1E" }}>10%</strong> of token supply
               </li>
               <li>
-                Liquidity: <strong style={{ color: "#E3AB1E" }}>10%</strong>
+              If Luigi receives the death penalty, <strong style={{ color: "#E3AB1E" }}>90%</strong>  of all remaining tokens will be burned!
               </li>
               <li>
-                Marketing & Development:{" "}
-                <strong style={{ color: "#E3AB1E" }}>5%</strong>
-              </li>
-              <li>
-                Burn Allocation: <strong style={{ color: "#E3AB1E" }}>80%</strong>
+              If Luigi receives 25 to life, <strong style={{ color: "#E3AB1E" }}>50%</strong>  of all remaining tokens will be burned!
               </li>
             </Box>
           </Box>
