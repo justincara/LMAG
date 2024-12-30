@@ -189,22 +189,43 @@ function Buy() {
   };
 
   const sendAmountHandler = ({ value }) => {
-    if (value.slice(value.indexOf(".")).length <= 10) {
-      const tokensForSol = converterSolToTokens(value);
-      setAmount({ sol: value.replace(/^0+/, ""), tokens: tokensForSol });
+    let inputValue = value; // The raw input value
+    if (inputValue < 0) {
+      alert("Negative values are not allowed!");
+      return;
+    }
+    // Ensure the value is a string before performing string operations
+    inputValue = inputValue.toString();
+    if (inputValue.includes(".") && inputValue.split(".")[1].length > 10) {
+      setAmount({ ...amount }); // Keep the existing state if precision exceeds 10 decimal places
     } else {
-      setAmount({ ...amount });
+      const tokensForSol = converterSolToTokens(parseFloat(inputValue));
+      setAmount({
+        sol: inputValue.replace(/^0+/, ""), // Remove leading zeros
+        tokens: tokensForSol,
+      });
     }
   };
-
+  
   const receiveAmountHandler = ({ value }) => {
-    if (value.slice(value.indexOf(".")).length <= 3) {
-      const solFortokens = converterTokensToSol(value);
-      setAmount({ sol: solFortokens, tokens: value.replace(/^0+/, "") });
+    let inputValue = value; // The raw input value
+    if (inputValue < 0) {
+      alert("Negative values are not allowed!");
+      return;
+    }
+    // Ensure the value is a string before performing string operations
+    inputValue = inputValue.toString();
+    if (inputValue.includes(".") && inputValue.split(".")[1].length > 3) {
+      setAmount({ ...amount }); // Keep the existing state if precision exceeds 3 decimal places
     } else {
-      setAmount({ ...amount });
+      const solForTokens = converterTokensToSol(parseFloat(inputValue));
+      setAmount({
+        sol: solForTokens,
+        tokens: inputValue.replace(/^0+/, ""), // Remove leading zeros
+      });
     }
   };
+  
 
   useEffect(() => {
     if (publicKey) {
@@ -241,7 +262,7 @@ function Buy() {
     id="investing"
     >
       <Typography
-        variant="h3"
+        // variant="h3"
         sx={{
           fontFamily: "Zen Dots, sans-serif",
           fontSize: {
@@ -252,8 +273,6 @@ function Buy() {
           fontWeight: 400,
           lineHeight: 1.6,
           textAlign: "center",
-          textUnderlinePosition: "from-font",
-          textDecorationSkipInk: "none",
           marginBottom: 2,
         }}
       >
@@ -325,7 +344,7 @@ function Buy() {
               sx={{
                 backgroundColor: "#EFBF04",
                 color: "#000",
-                fontFamily: "Lora, serif",
+                fontFamily: "Lora",
                 fontSize: "20px",
                 fontWeight: 400,
                 lineHeight: 1.6,
@@ -347,7 +366,7 @@ function Buy() {
               sx={{
                 backgroundColor: "#EFBF04",
                 color: "#000",
-                fontFamily: "Lora, serif",
+                fontFamily: "Lora",
                 fontSize: "20px",
                 fontWeight: 400,
                 lineHeight: 1.6,
@@ -412,7 +431,7 @@ function Buy() {
             >
               <p
                 style={{
-                  fontFamily: "Lora, serif",
+                  fontFamily: "Lora",
                   fontSize: "16px",
                   fontWeight: 700,
                   lineHeight: 1.6,
@@ -434,10 +453,11 @@ function Buy() {
                 <input
                   type="number"
                   placeholder="Enter amount"
+                  min="0"
                   value={amount?.sol}
                   onChange={(e) => sendAmountHandler(e.target)}
                   style={{
-                    fontFamily: "Lora, serif",
+                    fontFamily: "Lora",
                     fontSize: "16px",
                     fontWeight: 400,
                     lineHeight: 1.6,
@@ -464,13 +484,13 @@ function Buy() {
             >
               <p
                 style={{
-                  fontFamily: "Lora, serif",
+                  fontFamily: "Lora",
                   fontSize: "16px",
                   fontWeight: 700,
                   lineHeight: 1.6,
                   textAlign: "left",
-                  textUnderlinePosition: "from-font",
-                  textDecorationSkipInk: "none",
+                  // textUnderlinePosition: "from-font",
+                  // textDecorationSkipInk: "none",
                   marginBottom: "8px",
                 }}
               >
@@ -485,8 +505,9 @@ function Buy() {
               >
                 <input
                   type="number"
+                  min="0"
                   style={{
-                    fontFamily: "Lora, serif",
+                    fontFamily: "Lora",
                     fontSize: "16px",
                     fontWeight: 400,
                     lineHeight: 1.6,
@@ -529,7 +550,7 @@ function Buy() {
                   justifyContent: "center",
                   alignItems: "center",
                   fontSize: "16px",
-                  fontFamily: "Lora, serif",
+                  fontFamily: "Lora",
                 }}
               />
             </div>
@@ -598,7 +619,7 @@ function Buy() {
               sx={{
                 textAlign: "left",
                 paddingLeft: 4,
-                fontFamily: "Lora, serif",
+                fontFamily: "Lora",
                 fontSize: "18px",
                 listStyleType: "disc",
               }}
