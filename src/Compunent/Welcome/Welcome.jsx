@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
-import WelcomePerson from "../assets/WelcomePerson.svg";
-import AnimationVideo from "../assets/BitcoinAnimation.mp4";
 
 function Welcome() {
   const [fadeIn, setFadeIn] = useState(false);
@@ -50,7 +48,7 @@ function Welcome() {
             transform: "translate(-50%, -50%)",
           }}
         >
-          <source src={AnimationVideo} type="video/mp4" />
+          <source src='/assets/BitcoinAnimation.mp4' type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </Box>
@@ -102,7 +100,7 @@ function Welcome() {
         {/* Center Image with Fade Animation */}
         <Box
           component="img"
-          src={WelcomePerson}
+          src="/assets/WelcomePerson.svg"
           alt="Welcome Person"
           sx={{
             width: {

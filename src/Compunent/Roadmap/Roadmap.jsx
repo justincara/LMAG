@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import RoadmapXS from "./RoadmapXS";
+import { Typography } from "@mui/material";
 
 const Roadmap = () => {
   const phases = [
@@ -67,12 +68,25 @@ const Roadmap = () => {
   return (
     <div id="roadmap" className="min-h-screen bg-black p-8" style={{ paddingTop: "100px", marginTop: '125px' }}>
       <div className="max-w-4xl mx-auto">
-        <h1
-          className="text-4xl font-bold text-white mb-20 text-center"
-          style={{ fontSize: {xs: '32px', sm: '32px', md: '64px'}, paddingBottom: "40px" }}
+        <Typography
+          variant="h3"
+          sx={{
+            fontFamily: "Zen Dots, sans-serif",
+            fontSize: {
+              xs: "32px",
+              sm: "32px",
+              md: "64px", 
+            },
+            fontWeight: 400,
+            lineHeight: 1.6,
+            textAlign: "center",
+            marginBottom: 2,
+            color: 'white',
+            paddingBottom: "40px" 
+          }}
         >
           LMAG Roadmap
-        </h1>
+        </Typography>
 
         <div className="relative">
           {/* Vertical Timeline Line */}
@@ -139,6 +153,7 @@ const Roadmap = () => {
                   style={{
                     fontSize: "20px",
                     transition: "all 0.3s ease-in-out",
+                    fontFamily: "Lora, serif",
                   }}
                 >
                   {phase.phase}
@@ -159,6 +174,7 @@ const Roadmap = () => {
                     fontSize: "18px",
                     lineHeight: 1.6,
                     transition: "opacity 0.3s ease-in-out",
+                    fontFamily: "Lora, serif",
                   }}
                 >
                   {phase.description}

@@ -55,9 +55,6 @@ function Collection() {
       >
         {/* First Image */}
         <Box
-          component="img"
-          src={coll1}
-          alt="Collection 1"
           sx={{
             width: {
               xs: "300px", 
@@ -71,25 +68,27 @@ function Collection() {
             border: "4px solid #EFBF04",
             // objectFit: "contain",
           }}
-        />
+        >
+          <img src={coll1} alt="Collection 1" style={{width: '100%', height: '100%'}} loading="lazy" />
+        </Box>
         {/* Second Image */}
         <Box
-          component="img"
-          src={coll2}
-          alt="Collection 2"
           sx={{
             width: {
               xs: "300px", 
+
               sm: "420px", 
             },
             height: {
               xs: "500px",
-              sm: "692px", 
+              sm: "692px",
             },
             border: "4px solid #EFBF04",
             // objectFit: "contain",
           }}
-        />
+        >
+          <img src={coll2} alt="Collection 2" style={{width: '100%', height: '100%'}} loading="lazy" />
+        </Box>
       </Box>
 
     </Box>

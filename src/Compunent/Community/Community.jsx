@@ -36,7 +36,7 @@ function CommunitySection() {
       <Typography
         variant="paragraph"
         sx={{
-          fontFamily: "Lora, sans-serif",
+          fontFamily: "Lora, serif",
           fontWeight: 400,
           fontSize: '18px'
         }}

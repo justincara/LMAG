@@ -38,8 +38,8 @@ function About() {
       <Typography
         variant="body1"
         sx={{
-          fontFamily: "Lora, serif",
-          fontSize: {xs: "14px", sm: "14px", md: "20px"},
+          fontFamily: "Lora, serif !important",
+          fontSize: { xs: "14px !important", sm: "14px !important", md: "20px !important" },
           fontWeight: 400,
           lineHeight: 1.6,
           textAlign: "center",
@@ -82,17 +82,16 @@ function About() {
           }}
         >
           <Box
-            component="img"
-            src={Escorted}
-            alt="Escorted Image"
             sx={{
               width: "100%",
-              maxWidth: "750px", // Upper size limit
-              minWidth: "250px", // Lower size limit
+              maxWidth: "750px",
+              minWidth: "250px", 
               height: "400px",
               objectFit: "cover",
             }}
-          />
+          >
+            <img src={Escorted} alt="Escorted Img" style={{width: '100%', height: '100%'}} loading="lazy" />
+          </Box>
         </Grid>
 
         {/* Second Image - Occupies 25% of the screen */}
@@ -110,17 +109,16 @@ function About() {
           }}
         >
           <Box
-            component="img"
-            src={SmilingPortrait}
-            alt="Smiling Portrait"
             sx={{
               width: "100%",
-              maxWidth: "350px", // Upper size limit
-              minWidth: {xs: '250px', sm: '250px', md: '150px'}, // Lower size limit
+              maxWidth: "350px", 
+              minWidth: {xs: '250px', sm: '250px', md: '150px'},
               height: "400px",
               objectFit: "cover",
             }}
-          />
+          >
+            <img src={SmilingPortrait} alt="Smiling Portrait" style={{width: '100%', height: '100%'}} loading="lazy" />
+          </Box>
         </Grid>
 
         {/* Third Image - Occupies 25% of the screen */}
@@ -138,17 +136,16 @@ function About() {
           }}
         >
           <Box
-            component="img"
-            src={PostArrest}
-            alt="Post Arrest"
             sx={{
               width: "100%",
-              maxWidth: "350px", // Upper size limit
-              minWidth: {xs: '250px', sm: '250px', md: '150px'}, // Lower size limit
+              maxWidth: "350px",
+              minWidth: {xs: '250px', sm: '250px', md: '150px'}, 
               height: "400px",
               objectFit: "cover",
             }}
-          />
+          >
+            <img src={PostArrest} alt="Post Arrest" style={{width: '100%', height: '100%'}} loading="lazy" />
+          </Box>
         </Grid>
       </Grid>
 

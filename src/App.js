@@ -13,8 +13,8 @@ import theme from "./Theme";
 
 function App() {
   return (
-    // <ThemeProvider theme={theme}>
-    //   <CssBaseline />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <div className="App" style={{ lineHeight: 1.6 }}>
         <Wallet>
           <Nav />
@@ -28,7 +28,7 @@ function App() {
         </Wallet>
       </div>
 
-    // </ThemeProvider>
+    </ThemeProvider>
   ); 
 }
 

@@ -189,39 +189,37 @@ function Buy() {
   };
 
   const sendAmountHandler = ({ value }) => {
-    let inputValue = value; // The raw input value
+    let inputValue = value; 
     if (inputValue < 0) {
       alert("Negative values are not allowed!");
       return;
     }
-    // Ensure the value is a string before performing string operations
     inputValue = inputValue.toString();
     if (inputValue.includes(".") && inputValue.split(".")[1].length > 10) {
-      setAmount({ ...amount }); // Keep the existing state if precision exceeds 10 decimal places
+      setAmount({ ...amount }); 
     } else {
       const tokensForSol = converterSolToTokens(parseFloat(inputValue));
       setAmount({
-        sol: inputValue.replace(/^0+/, ""), // Remove leading zeros
+        sol: inputValue.replace(/^0+/, ""),
         tokens: tokensForSol,
       });
     }
   };
   
   const receiveAmountHandler = ({ value }) => {
-    let inputValue = value; // The raw input value
+    let inputValue = value; 
     if (inputValue < 0) {
       alert("Negative values are not allowed!");
       return;
     }
-    // Ensure the value is a string before performing string operations
     inputValue = inputValue.toString();
     if (inputValue.includes(".") && inputValue.split(".")[1].length > 3) {
-      setAmount({ ...amount }); // Keep the existing state if precision exceeds 3 decimal places
+      setAmount({ ...amount }); 
     } else {
       const solForTokens = converterTokensToSol(parseFloat(inputValue));
       setAmount({
         sol: solForTokens,
-        tokens: inputValue.replace(/^0+/, ""), // Remove leading zeros
+        tokens: inputValue.replace(/^0+/, ""),
       });
     }
   };
@@ -262,7 +260,7 @@ function Buy() {
     id="investing"
     >
       <Typography
-        // variant="h3"
+        variant="h3"
         sx={{
           fontFamily: "Zen Dots, sans-serif",
           fontSize: {
@@ -274,6 +272,7 @@ function Buy() {
           lineHeight: 1.6,
           textAlign: "center",
           marginBottom: 2,
+          color: 'white'
         }}
       >
         Start Investing in LMAG Today
@@ -344,9 +343,9 @@ function Buy() {
               sx={{
                 backgroundColor: "#EFBF04",
                 color: "#000",
-                fontFamily: "Lora",
-                fontSize: "20px",
-                fontWeight: 400,
+                fontFamily: "Lora, serif !important",
+                fontSize: "20px !important",
+                fontWeight: "400 !important",
                 lineHeight: 1.6,
                 textAlign: "center",
                 borderRadius: "40px",
@@ -354,7 +353,7 @@ function Buy() {
                 width: "200px",
                 height: "65px",
                 textTransform: "none",
-                border: '2px solid #000',
+                border: "2px solid #000",
                 "&:hover": {
                   backgroundColor: "#d4a904",
                 },
@@ -366,9 +365,9 @@ function Buy() {
               sx={{
                 backgroundColor: "#EFBF04",
                 color: "#000",
-                fontFamily: "Lora",
-                fontSize: "20px",
-                fontWeight: 400,
+                fontFamily: "Lora, serif !important",
+                fontSize: "20px !important",
+                fontWeight: "400 !important",
                 lineHeight: 1.6,
                 textAlign: "center",
                 borderRadius: "40px",
@@ -376,7 +375,7 @@ function Buy() {
                 width: "200px",
                 height: "65px",
                 textTransform: "none",
-                border: '2px solid #000',
+                border: "2px solid #000",
                 "&:hover": {
                   backgroundColor: "#d4a904",
                 },
@@ -398,8 +397,8 @@ function Buy() {
                 </div>
                 <div className="flex flex-col sm:flex-row justify-between mb-4 space-y-2 sm:space-y-0">
                   <div>
-                    <p className="text-sm">Tokens Sold</p>
-                    <p className="text-lg font-bold">
+                    <p className="text-sm" style={{fontFamily: "Lora, serif"}}>Tokens Sold</p>
+                    <p className="text-lg font-bold" style={{fontFamily: "Lora, serif"}}>
                       {programData?.totalSold / (10 ** decimals).toFixed(decimals)} /{" "}
                       {(Number(programData?.tokensBalance) +
                         Number(programData?.totalSold)) /
@@ -407,8 +406,8 @@ function Buy() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm">SOL Raised</p>
-                    <p className="text-lg font-bold">
+                    <p className="text-sm" style={{fontFamily: "Lora, serif"}}>SOL Raised</p>
+                    <p className="text-lg font-bold" style={{fontFamily: "Lora, serif"}}>
                       {(programData?.lamportsReceived / LAMPORTS_PER_SOL).toFixed(9)} /{" "}
                       {converterTokensToSol(
                         (Number(programData?.tokensBalance) +
@@ -431,7 +430,7 @@ function Buy() {
             >
               <p
                 style={{
-                  fontFamily: "Lora",
+                  fontFamily: "Lora, serif",
                   fontSize: "16px",
                   fontWeight: 700,
                   lineHeight: 1.6,
@@ -484,13 +483,11 @@ function Buy() {
             >
               <p
                 style={{
-                  fontFamily: "Lora",
+                  fontFamily: "Lora, serif",
                   fontSize: "16px",
                   fontWeight: 700,
                   lineHeight: 1.6,
                   textAlign: "left",
-                  // textUnderlinePosition: "from-font",
-                  // textDecorationSkipInk: "none",
                   marginBottom: "8px",
                 }}
               >
@@ -591,6 +588,7 @@ function Buy() {
                 height: {xs: '275px', sm: '300px', md: '346px'},
                 objectFit: "cover",
               }}
+              loading="lazy"
             />
           </Box>
 
@@ -614,43 +612,57 @@ function Buy() {
           >
             Token Allocation
           </Typography>
-            <Box
-              component="ul"
-              sx={{
-                textAlign: "left",
-                paddingLeft: 4,
-                fontFamily: "Lora",
+          <Box
+            component="ul"
+            sx={{
+              textAlign: "left",
+              paddingLeft: 4,
+              fontFamily: "Lora, serif !important",
+              fontSize: "18px !important",
+              listStyleType: "disc",
+              "& li": {
+                fontFamily: "Lora, serif",
                 fontSize: "18px",
-                listStyleType: "disc",
-              }}
-            >
-              <li>
+              },
+            }}
+          >
+            <li>
               Pre sale - <strong style={{ color: "#E3AB1E" }}>10%</strong> of token supply
-              </li>
-              <li>
-              If Luigi receives the death penalty, <strong style={{ color: "#E3AB1E" }}>90%</strong>  of all remaining tokens will be burned!
-              </li>
-              <li>
-              If Luigi receives 25 to life, <strong style={{ color: "#E3AB1E" }}>50%</strong>  of all remaining tokens will be burned!
-              </li>
-            </Box>
+            </li>
+            <li>
+              If Luigi receives the death penalty, <strong style={{ color: "#E3AB1E" }}>90%</strong> of all remaining tokens will be burned!
+            </li>
+            <li>
+              If Luigi receives 25 to life, <strong style={{ color: "#E3AB1E" }}>50%</strong> of all remaining tokens will be burned!
+            </li>
           </Box>
 
-          <div className="bg-yellow-500 text-white p-3 rounded mt-4 flex items-center justify-between">
-              <span className="break-all "style={{fontSize:"20px"}}>
-               {text}
+          </Box>
 
-              </span>
-             <span onClick={handleCopy}>{copyStatus}</span>
-            </div>
+          <div
+            className="bg-yellow-500 text-white p-3 rounded mt-4 flex items-center justify-between"
+            style={{
+              fontFamily: "Lora, serif",
+              fontSize: "20px",
+            }}
+          >
+            <span className="break-all">
+              {text}
+            </span>
+            <span onClick={handleCopy} className="cursor-pointer">
+              {copyStatus}
+            </span>
+          </div>
+
 
           <Box
             sx={{
               mt: 4,
             }}
           >
-            <button
-              style={{
+            <Button
+              sx={{
+                fontFamily: "Lora, serif",
                 backgroundColor: "#EFBF04",
                 color: "#000",
                 borderRadius: "20px",
@@ -659,10 +671,14 @@ function Buy() {
                 fontWeight: "bold",
                 border: "none",
                 cursor: "pointer",
+                textTransform: "none",
+                "&:hover": {
+                  backgroundColor: "#d4a904", // Optional hover state
+                },
               }}
             >
               Buy LMAG
-            </button>
+            </Button>
           </Box>
         </Box>
 
