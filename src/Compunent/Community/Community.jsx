@@ -56,44 +56,49 @@ function CommunitySection() {
           gap: 2,
         }}
       >
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "#EFBF04",
-            color: "#000",
-            fontFamily: "Lora, sans-serif",
-            fontWeight: 400,
-            borderRadius: "40px",
-            paddingX: 2,
-            height: "55px",
-            width: "200px",
-            textTransform: "none",
-            "&:hover": {
-              backgroundColor: "#d4a904",
-            },
-          }}
-        >
-          Join Telegram
-        </Button>
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "#EFBF04",
-            color: "#000",
-            fontFamily: "Lora, sans-serif",
-            fontWeight: 400,
-            width: "200px",
-            height: "55px",
-            borderRadius: "40px",
-            paddingX: 2,
-            textTransform: "none",
-            "&:hover": {
-              backgroundColor: "#d4a904",
-            },
-          }}
-        >
-          Join X (Twitter)
-        </Button>
+        <a href="https://t.me/+dnAyb36G9xtlMzgx">
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "#EFBF04",
+              color: "#000",
+              fontFamily: "Lora, sans-serif",
+              fontWeight: 400,
+              borderRadius: "40px",
+              paddingX: 2,
+              height: "55px",
+              width: "200px",
+              textTransform: "none",
+              "&:hover": {
+                backgroundColor: "#d4a904",
+              },
+            }}
+          >
+            Join Telegram
+          </Button>
+        </a>
+
+        <a href="https://x.com/LMAGCOIN">
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "#EFBF04",
+              color: "#000",
+              fontFamily: "Lora, sans-serif",
+              fontWeight: 400,
+              width: "200px",
+              height: "55px",
+              borderRadius: "40px",
+              paddingX: 2,
+              textTransform: "none",
+              "&:hover": {
+                backgroundColor: "#d4a904",
+              },
+            }}
+          >
+            Join X (Twitter)
+          </Button>
+        </a>
       </Box>
     </Box>
   );
