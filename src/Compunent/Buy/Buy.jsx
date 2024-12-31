@@ -635,6 +635,9 @@ function Buy() {
             <li>
               If Luigi receives 25 to life, <strong style={{ color: "#E3AB1E" }}>50%</strong> of all remaining tokens will be burned!
             </li>
+            <li>
+            Official drop and other tokenomics is subject to a community vote! Please join our telegram group by clicking the link below: https://t.me/+dnAyb36G9xtlMzgx
+            </li>
           </Box>
 
           </Box>

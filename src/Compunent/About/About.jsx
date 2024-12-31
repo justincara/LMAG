@@ -82,16 +82,18 @@ function About() {
           }}
         >
           <Box
+            component="img"
+            src={Escorted}
+            alt="Escorted Image"
             sx={{
               width: "100%",
-              maxWidth: "750px",
-              minWidth: "250px", 
+              maxWidth: "750px", // Upper size limit
+              minWidth: "250px", // Lower size limit
               height: "400px",
               objectFit: "cover",
             }}
-          >
-            <img src={Escorted} alt="Escorted Img" style={{width: '100%', height: '100%'}} loading="lazy" />
-          </Box>
+            loading="lazy"
+          />
         </Grid>
 
         {/* Second Image - Occupies 25% of the screen */}
@@ -109,16 +111,18 @@ function About() {
           }}
         >
           <Box
+            component="img"
+            src={SmilingPortrait}
+            alt="Smiling Portrait"
             sx={{
               width: "100%",
-              maxWidth: "350px", 
-              minWidth: {xs: '250px', sm: '250px', md: '150px'},
+              maxWidth: "350px", // Upper size limit
+              minWidth: {xs: '250px', sm: '250px', md: '150px'}, // Lower size limit
               height: "400px",
               objectFit: "cover",
             }}
-          >
-            <img src={SmilingPortrait} alt="Smiling Portrait" style={{width: '100%', height: '100%'}} loading="lazy" />
-          </Box>
+            loading="lazy"
+          />
         </Grid>
 
         {/* Third Image - Occupies 25% of the screen */}
@@ -136,16 +140,18 @@ function About() {
           }}
         >
           <Box
+            component="img"
+            src={PostArrest}
+            alt="Post Arrest"
             sx={{
               width: "100%",
-              maxWidth: "350px",
-              minWidth: {xs: '250px', sm: '250px', md: '150px'}, 
+              maxWidth: "350px", // Upper size limit
+              minWidth: {xs: '250px', sm: '250px', md: '150px'}, // Lower size limit
               height: "400px",
               objectFit: "cover",
             }}
-          >
-            <img src={PostArrest} alt="Post Arrest" style={{width: '100%', height: '100%'}} loading="lazy" />
-          </Box>
+            loading="lazy"
+          />
         </Grid>
       </Grid>
 
