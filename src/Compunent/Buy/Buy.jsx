@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import sol from "../assets/download.jpg"
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 import {
   Connection,
@@ -350,7 +351,7 @@ function Buy() {
                 textAlign: "center",
                 borderRadius: "40px",
                 paddingX: 2,
-                width: "200px",
+                width: "300px",
                 height: "65px",
                 textTransform: "none",
                 border: "2px solid #000",
@@ -359,30 +360,9 @@ function Buy() {
                 },
               }}
             >
-              LMAG = $0.01
+              LMAG = 0.000005 sol
             </Button>
-            <Button
-              sx={{
-                backgroundColor: "#EFBF04",
-                color: "#000",
-                fontFamily: "Lora, serif !important",
-                fontSize: "20px !important",
-                fontWeight: "400 !important",
-                lineHeight: 1.6,
-                textAlign: "center",
-                borderRadius: "40px",
-                paddingX: 2,
-                width: "200px",
-                height: "65px",
-                textTransform: "none",
-                border: "2px solid #000",
-                "&:hover": {
-                  backgroundColor: "#d4a904",
-                },
-              }}
-            >
-              Next Price $0.02
-            </Button>
+           
           </Box>
 
             {programData && (
@@ -448,6 +428,7 @@ function Buy() {
                   padding: "8px 0",
                   borderBottom: "2px solid black",
                 }}
+                className="flex"
               >
                 <input
                   type="number"
@@ -470,6 +451,7 @@ function Buy() {
                     width: "100%",
                   }}
                 />
+                <img src={sol} width={50} className="rounded" alt="" />
               </div>
             </div>
             <div
@@ -499,6 +481,7 @@ function Buy() {
                   padding: "8px 0",
                   borderBottom: "2px solid black",
                 }}
+                className="flex"
               >
                 <input
                   type="number"
@@ -521,6 +504,7 @@ function Buy() {
                   value={amount?.tokens}
                   onChange={(e) => receiveAmountHandler(e.target)}
                 />
+                 <img src={logo} width={50} className="rounded" alt="" />
               </div>
             </div>
             {publicKey && (

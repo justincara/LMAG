@@ -61,6 +61,13 @@ ul li{
 .topshadow{
   box-shadow: 0 0  17px #e4b233;
 }
+.jus{
+  width: 80%;
+  text-align: justify;
+  margin: auto;
+  font-family: "Lora, serif" !important;
+  font-size: 18px;
+}
 @media (max-width: 1000px) { 
   .widthAbout{
     width: 100%;
@@ -69,6 +76,11 @@ ul li{
     padding: 42px 20px;
     border-radius: 12px;
     box-shadow: 0 0 22px #e4b233;
+  }
+  .jus{
+    width: 100%;
+    text-align: justify;
+   
   }
   .widthAllocation{
     width: 100%;
