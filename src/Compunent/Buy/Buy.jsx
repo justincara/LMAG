@@ -13,7 +13,7 @@ import {
 import { Program, AnchorProvider, BN } from "@project-serum/anchor";
 import idl from "../context/idl.json";
 import {
-  admin,
+  receiver,
   decimals,
   icoMint,
   icoPda,
@@ -117,7 +117,7 @@ function Buy() {
         .buyWithSol(solAmount)
         .accounts({
           buyer: publicKey.toString(),
-          admin: admin,
+          receiver: receiver,
           buyerAta: account.toString(),
           programAta: programAta,
           icoPda: icoPda,
@@ -150,10 +150,10 @@ function Buy() {
       const connection = new Connection(endpoint, "confirmed");
       const prodramId = new PublicKey(ProgramID);
       const opts = { preflightCommitment: "processed" };
-      const adminWallet = Keypair.fromSecretKey(bs58.decode(keyData));
+      const wallet = Keypair.fromSecretKey(bs58.decode(keyData));
       const provider = new AnchorProvider(
         connection,
-        new NodeWallet(adminWallet),
+        new NodeWallet(wallet),
         opts.preflightCommitment
       );
       const program = new Program(idl, prodramId, provider);
