@@ -451,7 +451,7 @@ function Buy() {
                     width: "100%",
                   }}
                 />
-                <img src={sol} width={50} className="rounded" alt="" />
+                <img src={sol} width={50} className="rounded" alt="" loading="lazy"/>
               </div>
             </div>
             <div
@@ -620,7 +620,30 @@ function Buy() {
               If Luigi receives 25 to life, <strong style={{ color: "#E3AB1E" }}>50%</strong> of all remaining tokens will be burned!
             </li>
             <li>
-            Official drop and other tokenomics is subject to a community vote! Please join our telegram group by clicking the link below: https://t.me/+dnAyb36G9xtlMzgx
+            Official drop and other tokenomics is subject to a community vote! Please join our telegram group by clicking the link below:
+            <a href="https://t.me/+dnAyb36G9xtlMzgx">
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#EFBF04",
+                    color: "#000",
+                    fontFamily: "Lora, sans-serif",
+                    fontWeight: 400,
+                    borderRadius: "40px",
+                    marginTop: "10px",
+                    marginLeft: "5px",
+                    paddingX: 2,
+                    height: "40px",
+                    width: "130px",
+                    textTransform: "none",
+                    "&:hover": {
+                      backgroundColor: "#d4a904",
+                    },
+                  }}
+                >
+                  Join Telegram
+                </Button>
+              </a>
             </li>
           </Box>
 
@@ -647,25 +670,27 @@ function Buy() {
               mt: 4,
             }}
           >
-            <Button
-              sx={{
-                fontFamily: "Lora, serif",
-                backgroundColor: "#EFBF04",
-                color: "#000",
-                borderRadius: "20px",
-                padding: "10px 20px",
-                fontSize: "18px",
-                fontWeight: "bold",
-                border: "none",
-                cursor: "pointer",
-                textTransform: "none",
-                "&:hover": {
-                  backgroundColor: "#d4a904", // Optional hover state
-                },
-              }}
-            >
-              Buy LMAG
-            </Button>
+            <a href="#investing">
+              <Button
+                sx={{
+                  fontFamily: "Lora, serif",
+                  backgroundColor: "#EFBF04",
+                  color: "#000",
+                  borderRadius: "20px",
+                  padding: "10px 20px",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  border: "none",
+                  cursor: "pointer",
+                  textTransform: "none",
+                  "&:hover": {
+                    backgroundColor: "#d4a904", // Optional hover state
+                  },
+                }}
+              >
+                Buy LMAG
+              </Button>
+            </a>
           </Box>
         </Box>
 

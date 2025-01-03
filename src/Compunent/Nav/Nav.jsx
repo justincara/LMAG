@@ -11,17 +11,25 @@ function Nav() {
                     <img src={logo} alt="Hopepepe logo" />
                 </div>
                 <div className="hidden lg:flex space-x-4">
-                    <a href="#about" className="text-xl hover:text-yellow-500 hover:underline" style={{fontFamily: "Lora, serif"}}>About LMAG</a>
-                    <a href="#investing" className="text-xl hover:text-yellow-500 hover:underline" style={{fontFamily: "Lora, serif"}}>Start Investing</a>
-                    <a href="#collection" className="text-xl hover:text-yellow-500 hover:underline" style={{fontFamily: "Lora, serif"}}>LMAG Art</a>
-                    <a href="#roadmap" className="text-xl hover:text-yellow-500 hover:underline" style={{fontFamily: "Lora, serif"}}>LMAG Roadmap</a>
+                    <a href="#about" className="text-xl hover:text-yellow-500 hover:underline" style={{fontFamily: "Lora, serif"}}>
+                        <strong>About LMAG</strong>
+                    </a>
+                    <a href="#investing" className="text-xl hover:text-yellow-500 hover:underline" style={{fontFamily: "Lora, serif"}}>
+                        <strong>Start Investing</strong>
+                    </a>
+                    <a href="#collection" className="text-xl hover:text-yellow-500 hover:underline" style={{fontFamily: "Lora, serif"}}>
+                        <strong>LMAG Art</strong>
+                    </a>
+                    <a href="#roadmap" className="text-xl hover:text-yellow-500 hover:underline" style={{fontFamily: "Lora, serif"}}>
+                        <strong>LMAG Roadmap</strong>
+                    </a>
                 </div>
                 <div className="hidden lg:flex space-x-2">
                     <button
                         className="allbtn text-white font-bold py-2 px-4 rounded-full"
                         style={{ backgroundColor: '#121212', fontFamily: "Lora, serif" }}
                     >
-                        <a href="#roadmap" >Buy LMAG</a>
+                        <a href="#investing" >Buy LMAG</a>
                     </button>
                 </div>
                 <div className="lg:hidden">
@@ -40,7 +48,7 @@ function Nav() {
                         className="block w-full allbtn text-white font-bold py-2 px-4 rounded-full mt-2"
                         style={{ backgroundColor: '#121212' }}
                     >
-                        <a href="#roadmap" >Buy LMAG</a>
+                        <a href="#investing" >Buy LMAG</a>
                     </button>
                 </div>
             )}

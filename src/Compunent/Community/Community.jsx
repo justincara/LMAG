@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Typography, Box } from "@mui/material";
+import NewImg from "../assets/NewImg.webp";
 
 function CommunitySection() {
   return (
@@ -130,6 +131,10 @@ function CommunitySection() {
           financial advisor before investing. Only invest money you can afford
           to lose.
         </p>
+
+        <Box sx={{ padding: {xs: '0 15px', md: '0 50px'},  maxWidth: '1024px', width: {xs: '90%', sm: '100%', md: '100%'}, margin: '75px auto', height: {xs: '400px', md: '100%'}}}>
+        <img src={NewImg} alt="Lmag" loading="lazy" style={{width: '100%', height: '100%', border: "4px solid #EFBF04", objectFit: 'cover'}} />
+      </Box>
       </div>
     </Box>
   );
