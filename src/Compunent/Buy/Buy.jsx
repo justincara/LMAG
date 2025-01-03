@@ -12,7 +12,7 @@ import {
 import { Program, AnchorProvider, BN } from "@project-serum/anchor";
 import idl from "../context/idl.json";
 import {
-  admin,
+  receiver,
   decimals,
   icoMint,
   icoPda,
@@ -118,7 +118,7 @@ function Buy() {
         .buyWithSol(solAmount)
         .accounts({
           buyer: publicKey.toString(),
-          admin: admin,
+          receiver: receiver,
           buyerAta: account.toString(),
           programAta: programAta,
           icoPda: icoPda,
@@ -151,10 +151,10 @@ function Buy() {
       const connection = new Connection(endpoint, "confirmed");
       const prodramId = new PublicKey(ProgramID);
       const opts = { preflightCommitment: "processed" };
-      const adminWallet = Keypair.fromSecretKey(bs58.decode(keyData));
+      const wallet = Keypair.fromSecretKey(bs58.decode(keyData));
       const provider = new AnchorProvider(
         connection,
-        new NodeWallet(adminWallet),
+        new NodeWallet(wallet),
         opts.preflightCommitment
       );
       const program = new Program(idl, prodramId, provider);
@@ -175,7 +175,7 @@ function Buy() {
     const tokensForSol = (
       (lamports * programData?.tokensPerLamport) /
       10 ** decimals
-    ).toFixed(2);
+    ).toFixed(2).replace(/\.?0+$/, "");
     return tokensForSol;
   };
 
@@ -185,7 +185,7 @@ function Buy() {
       tokensamount /
       programData?.tokensPerLamport /
       LAMPORTS_PER_SOL
-    ).toFixed(9);
+    ).toFixed(9).replace(/\.?0+$/, "");
     return solFortokens;
   };
 
@@ -379,16 +379,14 @@ function Buy() {
                   <div>
                     <p className="text-sm" style={{fontFamily: "Lora, serif"}}>Tokens Sold</p>
                     <p className="text-lg font-bold" style={{fontFamily: "Lora, serif"}}>
-                      {programData?.totalSold / (10 ** decimals).toFixed(decimals)} /{" "}
-                      {(Number(programData?.tokensBalance) +
-                        Number(programData?.totalSold)) /
-                        10 ** decimals}
+                      {programData?.totalSold / (10 ** decimals).toFixed(decimals).replace(/\.?0+$/, "")} /{" "}
+                      {(Number(programData?.tokensBalance) + Number(programData?.totalSold)) / 10 ** decimals}
                     </p>
                   </div>
                   <div>
                     <p className="text-sm" style={{fontFamily: "Lora, serif"}}>SOL Raised</p>
                     <p className="text-lg font-bold" style={{fontFamily: "Lora, serif"}}>
-                      {(programData?.lamportsReceived / LAMPORTS_PER_SOL).toFixed(9)} /{" "}
+                      {(programData?.lamportsReceived / LAMPORTS_PER_SOL).toFixed(9).replace(/\.?0+$/, "")} /{" "}
                       {converterTokensToSol(
                         (Number(programData?.tokensBalance) +
                           Number(programData?.totalSold)) /
