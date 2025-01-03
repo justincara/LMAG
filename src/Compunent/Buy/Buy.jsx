@@ -174,7 +174,7 @@ function Buy() {
     const tokensForSol = (
       (lamports * programData?.tokensPerLamport) /
       10 ** decimals
-    ).toFixed(2);
+    ).toFixed(2).replace(/\.?0+$/, "");
     return tokensForSol;
   };
 
@@ -184,7 +184,7 @@ function Buy() {
       tokensamount /
       programData?.tokensPerLamport /
       LAMPORTS_PER_SOL
-    ).toFixed(9);
+    ).toFixed(9).replace(/\.?0+$/, "");
     return solFortokens;
   };
 
@@ -244,7 +244,7 @@ function Buy() {
                 <div>
                   <p className="text-sm">Tokens Sold</p>
                   <p className="text-lg font-bold">
-                    {programData?.totalSold / (10 ** decimals).toFixed(decimals)} /{" "}
+                    {programData?.totalSold / (10 ** decimals).toFixed(decimals).replace(/\.?0+$/, "")} /{" "}
                     {(Number(programData?.tokensBalance) +
                       Number(programData?.totalSold)) /
                       10 ** decimals}
@@ -253,7 +253,7 @@ function Buy() {
                 <div>
                   <p className="text-sm">SOL Raised</p>
                   <p className="text-lg font-bold">
-                    {(programData?.lamportsReceived / LAMPORTS_PER_SOL).toFixed(9)} /{" "}
+                    {(programData?.lamportsReceived / LAMPORTS_PER_SOL).toFixed(9).replace(/\.?0+$/, "")} /{" "}
                     {converterTokensToSol(
                       (Number(programData?.tokensBalance) +
                         Number(programData?.totalSold)) /
