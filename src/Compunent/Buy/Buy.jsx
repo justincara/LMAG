@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import sol from "../assets/download.jpg";
-import lmag from "../assets/logo.jpeg";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import sol from "../assets/download.jpg"
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 import {
   Connection,
@@ -31,6 +30,8 @@ import {
 import NodeWallet from "@project-serum/anchor/dist/cjs/nodewallet";
 import { bs58 } from "@project-serum/anchor/dist/cjs/utils/bytes";
 import { endpoint } from "../context/wallet";
+import { Button, Typography, Box } from "@mui/material";
+import logo from "../assets/BuyLogo.svg"
 
 function Buy() {
   const { publicKey, sendTransaction } = useWallet();
@@ -189,22 +190,41 @@ function Buy() {
   };
 
   const sendAmountHandler = ({ value }) => {
-    if (value.slice(value.indexOf(".")).length <= 10) {
-      const tokensForSol = converterSolToTokens(value);
-      setAmount({ sol: value.replace(/^0+/, ""), tokens: tokensForSol });
+    let inputValue = value; 
+    if (inputValue < 0) {
+      alert("Negative values are not allowed!");
+      return;
+    }
+    inputValue = inputValue.toString();
+    if (inputValue.includes(".") && inputValue.split(".")[1].length > 10) {
+      setAmount({ ...amount }); 
     } else {
-      setAmount({ ...amount });
+      const tokensForSol = converterSolToTokens(parseFloat(inputValue));
+      setAmount({
+        sol: inputValue.replace(/^0+/, ""),
+        tokens: tokensForSol,
+      });
     }
   };
-
+  
   const receiveAmountHandler = ({ value }) => {
-    if (value.slice(value.indexOf(".")).length <= 3) {
-      const solFortokens = converterTokensToSol(value);
-      setAmount({ sol: solFortokens, tokens: value.replace(/^0+/, "") });
+    let inputValue = value; 
+    if (inputValue < 0) {
+      alert("Negative values are not allowed!");
+      return;
+    }
+    inputValue = inputValue.toString();
+    if (inputValue.includes(".") && inputValue.split(".")[1].length > 3) {
+      setAmount({ ...amount }); 
     } else {
-      setAmount({ ...amount });
+      const solForTokens = converterTokensToSol(parseFloat(inputValue));
+      setAmount({
+        sol: solForTokens,
+        tokens: inputValue.replace(/^0+/, ""),
+      });
     }
   };
+  
 
   useEffect(() => {
     if (publicKey) {
@@ -213,102 +233,467 @@ function Buy() {
     fetchProgramData();
   }, [publicKey, txSig]);
 
-  return (
-    <div className="container">
-      <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center mb-5 text_shadow text-yellow-500">
-        LMAG Presale{" "}
-      </h1>
+  const [text, setText] = useState("  0xb014430ec5a7B56224e40850f2afBE10A5bd685d");
+  const [copyStatus, setCopyStatus] = useState(<i className="fas fa-copy"></i>);
 
-      <div className="flex justify-center items-center min-h-screen  p-4 widthAbout ">
-        <div className=" text-white p-6 rounded-lg  w-full max-w-3xl">
-          <h1 className="text-3xl  font-bold mb-4 text-center text_shadow text-yellow-500">
-            The Most LMAG Coin Representing Luigi Mangione – On Presale Now!
-          </h1>
-          <div className="flex flex-col sm:flex-row justify-center items-center mb-4 gap-3 space-y-2 sm:space-y-0">
-            <button className="allbtn text-black py-2 px-4 rounded">LMAG = $0.01</button>
-            <button className="allbtn text-white py-2 px-4 rounded">
-              Next Price $0.02
-            </button>
-          </div>
-          {programData && (
-            <>
-              <div className="flex items-center mb-4">
-                <div className="w-full bg-white h-3 rounded-full">
-                  <div
-                    className="bg-yellow-500 h-3 rounded-full"
-                    style={{ width: "1%" }}
-                  ></div>
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row justify-between mb-4 space-y-2 sm:space-y-0">
-                <div>
-                  <p className="text-sm">Tokens Sold</p>
-                  <p className="text-lg font-bold">
-                    {programData?.totalSold / (10 ** decimals).toFixed(decimals).replace(/\.?0+$/, "")} /{" "}
-                    {(Number(programData?.tokensBalance) +
-                      Number(programData?.totalSold)) /
-                      10 ** decimals}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm">SOL Raised</p>
-                  <p className="text-lg font-bold">
-                    {(programData?.lamportsReceived / LAMPORTS_PER_SOL).toFixed(9).replace(/\.?0+$/, "")} /{" "}
-                    {converterTokensToSol(
-                      (Number(programData?.tokensBalance) +
-                        Number(programData?.totalSold)) /
-                        10 ** decimals
-                    )}
-                  </p>
-                </div>
-              </div>
-            </>
-          )}
-          <div className=" p-3  mb-4 borderpay">
-            <p className="mb-2">You pay</p>
-            <div className="flex items-center bg-brown-700 p-2 rounded">
-              <input
-                type="number"
-                className="bg-transparent text-white w-full outline-none"
-                placeholder="Enter amount"
-                value={amount?.sol}
-                onChange={(e) => sendAmountHandler(e.target)}
-              />
-              <img src={sol} width={50} alt="SOL Logo" className="ml-2" />
-            </div>
-          </div>
-          <div className="borderpay p-3  mb-4">
-            <p className="mb-2">You receive</p>
-            <div className="flex items-center bg-brown-700 p-2 rounded">
-              <input
-                type="number"
-                className="bg-transparent text-white w-full outline-none"
-                placeholder="Receive amount"
-                value={amount?.tokens}
-                onChange={(e) => receiveAmountHandler(e.target)}
-              />
-              <img src={lmag} width={50} alt="BBM Logo" className="ml-2" />
-            </div>
-          </div>
-          {publicKey && (
-            <button
-              className="allbtn text-white py-2 px-4 rounded w-full mb-4"
-              onClick={() => buyTokens()}
-              disabled={!amount?.sol || !amount?.tokens}
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        setCopyStatus("Copied!");
+        setTimeout(() => setCopyStatus(<i className="fas fa-copy"></i>), 2000); // Reset button text after 2 seconds
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+        setCopyStatus("Failed!");
+        setTimeout(() => setCopyStatus(<i className="fas fa-copy"></i>), 2000); // Reset button text after 2 seconds
+      });
+  };
+
+  return (
+    <Box 
+    sx={{
+      padding: {
+        xs: "20px", 
+        sm: "25px", 
+        md: "50px",  
+      },
+    }}
+    id="investing"
+    >
+      <Typography
+        variant="h3"
+        sx={{
+          fontFamily: "Zen Dots, sans-serif",
+          fontSize: {
+            xs: "32px",
+            sm: "32px",
+            md: "64px", 
+          },
+          fontWeight: 400,
+          lineHeight: 1.6,
+          textAlign: "center",
+          marginBottom: 2,
+          color: 'white'
+        }}
+      >
+        Start Investing in LMAG Today
+      </Typography>
+      
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: {
+            xs: "column",
+            md: "row", 
+          },
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 4,
+          py: 6,
+          backgroundColor: "#000",
+          color: "#fff",
+        }}
+      >
+        <Box
+        sx={{
+          flex: {
+            xs: "1 1 100%", 
+            md: "1 1 50%", 
+          },
+          height: "auto", 
+          backgroundColor: "#f6f6f6",
+          color: "#000",
+          borderRadius: "20px",
+          padding: 4,
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+          textAlign: "center",
+        }}    
+        >
+          <div >
+          <Typography
+            variant="h3"
+            sx={{
+              fontFamily: "Zen Dots, sans-serif",
+              fontSize: {
+                xs: "28px",
+                sm: "30px",
+                md: "40px", 
+              },
+              fontWeight: 400,
+              lineHeight: 1.6,
+              textAlign: "left",
+              marginBottom: 2,
+            }}
+          >
+            Buy Now With Your Solana Wallet
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: {
+                xs: "column",
+                sm: "row",
+              },
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 2,
+              mb: 4,
+            }}
+          >
+            <Button
+              sx={{
+                backgroundColor: "#EFBF04",
+                color: "#000",
+                fontFamily: "Lora, serif !important",
+                fontSize: "20px !important",
+                fontWeight: "400 !important",
+                lineHeight: 1.6,
+                textAlign: "center",
+                borderRadius: "40px",
+                paddingX: 2,
+                width: "300px",
+                height: "65px",
+                textTransform: "none",
+                border: "2px solid #000",
+                "&:hover": {
+                  backgroundColor: "#d4a904",
+                },
+              }}
             >
-              BUY
-            </button>
-          )}
-          <div className="text-center">
-            <p className="mb-2">Balance: {balance}</p>
-            {/* <button className="allbtn text-white py-2 px-4 rounded">
-              Select Wallet
-            </button> */}
-            <WalletMultiButton />
+              LMAG = 0.000005 sol
+            </Button>
+           
+          </Box>
+
+            {programData && (
+              <>
+                <div className="flex items-center mb-4">
+                  <div className="w-full bg-white h-3 rounded-full">
+                    <div
+                      className="bg-yellow-500 h-3 rounded-full"
+                      style={{ width: "10%" }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="flex flex-col sm:flex-row justify-between mb-4 space-y-2 sm:space-y-0">
+                  <div>
+                    <p className="text-sm" style={{fontFamily: "Lora, serif"}}>Tokens Sold</p>
+                    <p className="text-lg font-bold" style={{fontFamily: "Lora, serif"}}>
+                      {programData?.totalSold / (10 ** decimals).toFixed(decimals).replace(/\.?0+$/, "")} /{" "}
+                      {(Number(programData?.tokensBalance) + Number(programData?.totalSold)) / 10 ** decimals}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm" style={{fontFamily: "Lora, serif"}}>SOL Raised</p>
+                    <p className="text-lg font-bold" style={{fontFamily: "Lora, serif"}}>
+                      {(programData?.lamportsReceived / LAMPORTS_PER_SOL).toFixed(9).replace(/\.?0+$/, "")} /{" "}
+                      {converterTokensToSol(
+                        (Number(programData?.tokensBalance) +
+                          Number(programData?.totalSold)) /
+                          10 ** decimals
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
+           <div
+              style={{
+                backgroundColor: "#EFBF04",
+                borderRadius: "30px",
+                marginBottom: "20px",
+                border: "2px solid black",
+                padding: "20px",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Lora, serif",
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  lineHeight: 1.6,
+                  textAlign: "left",
+                  textUnderlinePosition: "from-font",
+                  textDecorationSkipInk: "none",
+                  marginBottom: "8px",
+                }}
+              >
+                You Pay
+              </p>
+              <div
+                style={{
+                  backgroundColor: "transparent",
+                  padding: "8px 0",
+                  borderBottom: "2px solid black",
+                }}
+                className="flex"
+              >
+                <input
+                  type="number"
+                  placeholder="Enter amount"
+                  min="0"
+                  value={amount?.sol}
+                  onChange={(e) => sendAmountHandler(e.target)}
+                  style={{
+                    fontFamily: "Lora",
+                    fontSize: "16px",
+                    fontWeight: 400,
+                    lineHeight: 1.6,
+                    textAlign: "left",
+                    textUnderlinePosition: "from-font",
+                    textDecorationSkipInk: "none",
+                    color: "#666",
+                    backgroundColor: "transparent",
+                    border: "none",
+                    outline: "none",
+                    width: "100%",
+                  }}
+                />
+                <img src={sol} width={50} className="rounded" alt="" loading="lazy"/>
+              </div>
+            </div>
+            <div
+              style={{
+                backgroundColor: "#EFBF04",
+                borderRadius: "30px",
+                marginBottom: "20px",
+                border: "2px solid black",
+                padding: "20px",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Lora, serif",
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  lineHeight: 1.6,
+                  textAlign: "left",
+                  marginBottom: "8px",
+                }}
+              >
+                You Receive
+              </p>
+              <div
+                style={{
+                  backgroundColor: "transparent",
+                  padding: "8px 0",
+                  borderBottom: "2px solid black",
+                }}
+                className="flex"
+              >
+                <input
+                  type="number"
+                  min="0"
+                  style={{
+                    fontFamily: "Lora",
+                    fontSize: "16px",
+                    fontWeight: 400,
+                    lineHeight: 1.6,
+                    textAlign: "left",
+                    textUnderlinePosition: "from-font",
+                    textDecorationSkipInk: "none",
+                    color: "#666",
+                    backgroundColor: "transparent",
+                    border: "none",
+                    outline: "none",
+                    width: "100%",
+                  }}
+                  placeholder="Receive amount"
+                  value={amount?.tokens}
+                  onChange={(e) => receiveAmountHandler(e.target)}
+                />
+                 <img src={logo} width={50} className="rounded" alt="" />
+              </div>
+            </div>
+            {publicKey && (
+              <button
+                className="allbtn text-white py-2 px-4 rounded w-full mb-4"
+                onClick={() => buyTokens()}
+                disabled={!amount?.sol || !amount?.tokens}
+              >
+                BUY
+              </button>
+            )}
+            <div className="text-center">
+              {/* <button className="allbtn text-white py-2 px-4 rounded">
+                Select Wallet
+              </button> */}
+              <WalletMultiButton
+                style={{
+                  backgroundColor: "black", 
+                  borderRadius: "30px", 
+                  width: "172px",
+                  height: "56px", 
+                  color: "white", 
+                  display: "flex", 
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontSize: "16px",
+                  fontFamily: "Lora",
+                }}
+              />
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </Box>
+        
+        <Box
+          sx={{
+            flex: {
+              xs: "1 1 100%",
+              md: "1 1 50%",
+            },
+            height: "auto",
+            backgroundColor: "#000",
+            width: "100%",
+            color: "#fff",
+            borderRadius: "20px",
+            padding: 4,
+            gap: '25px',
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+            textAlign: "center",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mb: 4,
+            }}
+          >
+            <img
+              src={logo} 
+              alt="Pepe the frog sitting on a throne with gold coins around"
+              style={{
+                border: "4px solid #EFBF04",
+                borderRadius: "50%",
+                width: {xs: '275px', sm: '300px', md: '346px'},
+                height: {xs: '275px', sm: '300px', md: '346px'},
+                objectFit: "cover",
+              }}
+              loading="lazy"
+            />
+          </Box>
+
+          <Box>
+          <Typography
+            variant="h3"
+            sx={{
+              fontFamily: "Zen Dots, sans-serif",
+              fontSize: {
+                xs: "28px",
+                sm: "32px",
+                md: "40px", 
+              },
+              fontWeight: 400,
+              lineHeight: 1.6,
+              textAlign: "center",
+              textUnderlinePosition: "from-font",
+              textDecorationSkipInk: "none",
+              marginBottom: 2,
+            }}
+          >
+            Token Allocation
+          </Typography>
+          <Box
+            component="ul"
+            sx={{
+              textAlign: "left",
+              paddingLeft: 4,
+              fontFamily: "Lora, serif !important",
+              fontSize: "18px !important",
+              listStyleType: "disc",
+              "& li": {
+                fontFamily: "Lora, serif",
+                fontSize: "18px",
+              },
+            }}
+          >
+            <li>
+              Pre sale - <strong style={{ color: "#E3AB1E" }}>10%</strong> of token supply
+            </li>
+            <li>
+              If Luigi receives the death penalty, <strong style={{ color: "#E3AB1E" }}>90%</strong> of all remaining tokens will be burned!
+            </li>
+            <li>
+              If Luigi receives 25 to life, <strong style={{ color: "#E3AB1E" }}>50%</strong> of all remaining tokens will be burned!
+            </li>
+            <li>
+            Official drop and other tokenomics is subject to a community vote! Please join our telegram group by clicking the link below:
+            <a href="https://t.me/+dnAyb36G9xtlMzgx">
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#EFBF04",
+                    color: "#000",
+                    fontFamily: "Lora, sans-serif",
+                    fontWeight: 400,
+                    borderRadius: "40px",
+                    marginTop: "10px",
+                    marginLeft: "5px",
+                    paddingX: 2,
+                    height: "40px",
+                    width: "130px",
+                    textTransform: "none",
+                    "&:hover": {
+                      backgroundColor: "#d4a904",
+                    },
+                  }}
+                >
+                  Join Telegram
+                </Button>
+              </a>
+            </li>
+          </Box>
+
+          </Box>
+
+          <div
+            className="bg-yellow-500 text-white p-3 rounded mt-4 flex items-center justify-between"
+            style={{
+              fontFamily: "Lora, serif",
+              fontSize: "20px",
+            }}
+          >
+            <span className="break-all">
+              {text}
+            </span>
+            <span onClick={handleCopy} className="cursor-pointer">
+              {copyStatus}
+            </span>
+          </div>
+
+
+          <Box
+            sx={{
+              mt: 4,
+            }}
+          >
+            <a href="#investing">
+              <Button
+                sx={{
+                  fontFamily: "Lora, serif",
+                  backgroundColor: "#EFBF04",
+                  color: "#000",
+                  borderRadius: "20px",
+                  padding: "10px 20px",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  border: "none",
+                  cursor: "pointer",
+                  textTransform: "none",
+                  "&:hover": {
+                    backgroundColor: "#d4a904", // Optional hover state
+                  },
+                }}
+              >
+                Buy LMAG
+              </Button>
+            </a>
+          </Box>
+        </Box>
+
+      </Box>
+    </Box>
   );
 }
 
