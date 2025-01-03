@@ -340,7 +340,7 @@ function Buy() {
               mb: 4,
             }}
           >
-            <Button
+            {programData && <Button
               sx={{
                 backgroundColor: "#EFBF04",
                 color: "#000",
@@ -360,8 +360,8 @@ function Buy() {
                 },
               }}
             >
-              LMAG = 0.000005 sol
-            </Button>
+              LMAG = {converterTokensToSol(1)} sol
+            </Button>}
            
           </Box>
 
