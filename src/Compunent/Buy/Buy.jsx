@@ -233,7 +233,7 @@ function Buy() {
     fetchProgramData();
   }, [publicKey, txSig]);
 
-  const [text, setText] = useState("  0xb014430ec5a7B56224e40850f2afBE10A5bd685d");
+  const [text, setText] = useState("  ChsgrSeoT9FsNuibTGKdAHAwmjRWsnFWQ5WBPsxpB7RT");
   const [copyStatus, setCopyStatus] = useState(<i className="fas fa-copy"></i>);
 
   const handleCopy = () => {
@@ -248,7 +248,36 @@ function Buy() {
         setTimeout(() => setCopyStatus(<i className="fas fa-copy"></i>), 2000); // Reset button text after 2 seconds
       });
   };
+  const calculateTimeLeft = () => {
+    const targetDate = new Date("June 1, 2025 00:00:00").getTime();
+    const currentTime = new Date().getTime();
+    const difference = targetDate - currentTime;
 
+    if (difference > 0) {
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor(
+        (difference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      return { days, hours, minutes, seconds };
+    } else {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer); // Cleanup interval on component unmount
+  }, []);
   return (
     <Box 
     sx={{
@@ -327,6 +356,39 @@ function Buy() {
           >
             Buy Now With Your Solana Wallet
           </Typography>
+          <Typography
+            variant="h3"
+            sx={{
+              fontFamily: "Zen Dots, sans-serif",
+              fontSize: {
+                xs: "28px",
+                
+              },
+              fontWeight: 400,
+              lineHeight: 1.6,
+              textAlign: "center",
+              marginBottom: 2,
+            }}
+          >
+            Mega Launch Will Start In
+          </Typography>
+
+<div className="flex ">
+  <div className="box">{timeLeft.days}
+    <p className="fonn">Days</p>
+  </div><p className="icon">:</p>
+  <div className="box">{timeLeft.hours}
+    <p className="fonn">Hours</p>
+  </div><p className="icon">:</p>
+  <div className="box">{timeLeft.minutes}
+    <p className="fonn">Minutes</p>
+  </div><p className="icon">:</p>
+  <div className="box">{timeLeft.seconds}
+    <p className="fonn">Seconds</p>
+  </div>
+</div>
+
+
           <Box
             sx={{
               display: "flex",
@@ -574,43 +636,78 @@ function Buy() {
             />
           </Box>
 
+         
           <Box>
-          <Typography
-            variant="h3"
-            sx={{
-              fontFamily: "Zen Dots, sans-serif",
-              fontSize: {
-                xs: "28px",
-                sm: "32px",
-                md: "40px", 
-              },
-              fontWeight: 400,
-              lineHeight: 1.6,
-              textAlign: "center",
-              textUnderlinePosition: "from-font",
-              textDecorationSkipInk: "none",
-              marginBottom: 2,
-            }}
-          >
-            Token Allocation
-          </Typography>
-          <Box
-            component="ul"
-            sx={{
-              textAlign: "left",
-              paddingLeft: 4,
-              fontFamily: "Lora, serif !important",
-              fontSize: "18px !important",
-              listStyleType: "disc",
-              "& li": {
-                fontFamily: "Lora, serif",
-                fontSize: "18px",
-              },
-            }}
-          >
-            <li>
-              Pre sale - <strong style={{ color: "#E3AB1E" }}>10%</strong> of token supply
-            </li>
+            <Typography
+              variant="h3"
+              sx={{
+                fontFamily: "Zen Dots, sans-serif",
+                fontSize: {
+                  xs: "28px",
+                  sm: "32px",
+                  md: "35px",
+                },
+                fontWeight: 400,
+                lineHeight: 1.6,
+                textAlign: "center",
+                textUnderlinePosition: "from-font",
+                textDecorationSkipInk: "none",
+                marginBottom: 2,
+              }}
+            >
+              Token Distribution and Post-Mega Launch Tokenomics
+            </Typography>
+            <Box
+              component="ul"
+              sx={{
+                textAlign: "left",
+                paddingLeft: 4,
+                fontFamily: "Lora, serif !important",
+                fontSize: "18px !important",
+                listStyleType: "disc",
+                "& li": {
+                  fontFamily: "Lora, serif",
+                  fontSize: "18px",
+                },
+              }}
+            >
+              <p>1: Pre-Sale Success</p>
+              <li>
+                <strong style={{ color: "#E3AB1E" }}>10%</strong> of the total
+                token supply has been distributed during the pre-sale phase.
+              </li>
+              <li>
+                Achieved entirely through natural media coverage and organic
+                word of mouth, without any ad revenue.
+              </li>
+              <p>2: Mega Launch Campaign</p>
+
+              <li>
+                <strong style={{ color: "#E3AB1E" }}>10%</strong> of presale
+                proceeds will be allocated to fuel a comprehensive advertising
+                campaign for the Mega Launch trailing Luigi Mangione nationwide
+                trial interest outcome.
+              </li>
+              <li>
+                This marks the transition to a high-visibility growth strategy.
+              </li>
+              <Typography
+              variant="h3"
+              sx={{
+                fontFamily: "Zen Dots, sans-serif",
+                fontSize: "20px",
+                fontWeight: 400,
+                lineHeight: 1.6,
+                textAlign: "start",
+                textUnderlinePosition: "from-font",
+                textDecorationSkipInk: "none",
+                marginBottom: 2,
+                marginTop: 2,
+              }}
+            >
+              Post-Mega Launch Burn Mechanism
+            </Typography>
+            <p>To ensure transparency and align token supply with pivotal outcomes, we’ve implemented a dynamic burn mechanism:</p>
             <li>
               If Luigi receives the death penalty, <strong style={{ color: "#E3AB1E" }}>90%</strong> of all remaining tokens will be burned!
             </li>
@@ -618,8 +715,14 @@ function Buy() {
               If Luigi receives 25 to life, <strong style={{ color: "#E3AB1E" }}>50%</strong> of all remaining tokens will be burned!
             </li>
             <li>
+            If Luigi is found not guilty,
+             <strong style={{ color: "#E3AB1E" }}> 25%</strong>  of the remaining tokens will be burned.
+            </li>
+            <p>Community-Driven Tokenomics.</p>
+            <p>Further adjustments to the tokenomics will be determined by community vote. We value your input!</p>
+            <li>
             Official drop and other tokenomics is subject to a community vote! Please join our telegram group by clicking the link below:
-            <a href="https://t.me/+dnAyb36G9xtlMzgx">
+            <a href="https://t.me/lmagcoin">
                 <Button
                   variant="contained"
                   sx={{
@@ -651,7 +754,7 @@ function Buy() {
             className="bg-yellow-500 text-white p-3 rounded mt-4 flex items-center justify-between"
             style={{
               fontFamily: "Lora, serif",
-              fontSize: "20px",
+              fontSize: "18px",
             }}
           >
             <span className="break-all">
