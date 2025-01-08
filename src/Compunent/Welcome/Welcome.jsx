@@ -76,7 +76,7 @@ function Welcome() {
               color: "#fff",
             }}
           >
-            The Most Potent Coin Representing
+            The Most Potent Token Representing
           </Typography>
 
           <Typography

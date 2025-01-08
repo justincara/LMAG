@@ -799,7 +799,9 @@ function Buy() {
               <li>
                 Official drop and other tokenomics is subject to a community
                 vote! Please join our telegram group by clicking the link below:
-                <a href="https://t.me/lmagcoin">
+              </li>
+            </Box>
+                <a href="https://t.me/lmagcoin" style={{display: 'flex', justifyContent: 'center'}}>
                   <Button
                     variant="contained"
                     sx={{
@@ -809,9 +811,8 @@ function Buy() {
                       fontWeight: 400,
                       borderRadius: "40px",
                       marginTop: "10px",
-                      marginLeft: "5px",
-                      paddingX: 2,
                       height: "40px",
+                      justifyContent: "center",
                       width: "130px",
                       textTransform: "none",
                       "&:hover": {
@@ -822,8 +823,6 @@ function Buy() {
                     Join Telegram
                   </Button>
                 </a>
-              </li>
-            </Box>
           </Box>
 
           <div

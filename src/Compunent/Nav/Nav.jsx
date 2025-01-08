@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from "../assets/Logo.svg";
+import logo from "../assets/Logo.png";
 
 function Nav() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -8,7 +8,7 @@ function Nav() {
         <div className="p-4" style={{ backgroundColor: '#EFBF04', color: '#000', fontFamily: 'Lora', fontWeight: 400 }}>
             <div className="flex items-center justify-between container">
                 <div className="flex items-center">
-                    <img src={logo} alt="Hopepepe logo" />
+                    <img src={logo} alt="Hopepepe logo" style={{width: '228px', height: '60px'}} />
                 </div>
                 <div className="hidden lg:flex space-x-4">
                     <a href="#about" className="text-xl hover:text-yellow-500 hover:underline" style={{fontFamily: "Lora, serif"}}>

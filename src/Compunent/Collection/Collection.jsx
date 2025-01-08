@@ -36,7 +36,7 @@ function Collection() {
           marginBottom: 4,
         }}
       >
-        LMAG Coin Art Collection
+        LMAG Token Art Collection
       </Typography>
 
       {/* Image Container */}
