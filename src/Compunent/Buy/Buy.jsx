@@ -32,6 +32,7 @@ import { bs58 } from "@project-serum/anchor/dist/cjs/utils/bytes";
 import { endpoint } from "../context/wallet";
 import { Button, Typography, Box } from "@mui/material";
 import logo from "../assets/BuyLogo.svg"
+import HighResLogo from '../assets/HighResLogo.jpeg'
 
 function Buy() {
   const { publicKey, sendTransaction } = useWallet();
@@ -562,10 +563,11 @@ function Buy() {
               mb: 4,
             }}
           >
-            <img
-              src={logo} 
+            <Box
+              component="img"
+              src={HighResLogo} 
               alt="Pepe the frog sitting on a throne with gold coins around"
-              style={{
+              sx={{
                 border: "4px solid #EFBF04",
                 borderRadius: "50%",
                 width: {xs: '275px', sm: '300px', md: '346px'},

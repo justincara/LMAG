@@ -63,7 +63,7 @@ function Welcome() {
         }}
       >
         {/* Text Content */}
-        <Box sx={{marginBottom: {xs: "-85px", sm: "-85px", md: '-120px', lg: "-130px"}}}>
+        <Box sx={{marginBottom: {xs: "-35px", sm: "-35px", md: '-50px', lg: "-50px"}}}>
           <Typography
             sx={{
               fontFamily: "Zen Dots, sans-serif",
@@ -100,15 +100,15 @@ function Welcome() {
         {/* Center Image with Fade Animation */}
         <Box
           component="img"
-          src="/assets/WelcomePerson.svg"
+          src="/assets/WelcomePerson.webp"
           alt="Welcome Person"
           sx={{
             width: {
               xs: "350px",
               sm: "350px",
-              md: "600px",
+              md: "450px",
             },
-            maxHeight: {md: '300px', lg: '300px'}, 
+            maxHeight: {md: '325px', lg: '375px'}, 
             opacity: fadeIn ? 1 : 0,
             transition: "opacity 2s ease-in",
             marginTop: "16px", 
