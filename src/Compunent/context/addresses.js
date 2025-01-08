@@ -1,10 +1,11 @@
-const ProgramID = "2wgDQ7J1xVqWEu3iLB2RMnrxnixWLWXES6VDjRhY3HNM"
-const icoMint = "AvEt25pkz91AaJM1K2bGcCGvm1AzfELFkQgKQEFUQc7n"
-const programAta = "AAFBzdZvirDzYLVwxdRnVs3CaosV4CN2mnfaRDoCCDvb"
-const icoPda = "GnvU4riHbrLY1E5nnfAhc5tCz2ZcNa8BzGg6HAVSh23s"
-const admin = "C5jtiLaDBDoRL1dkag8gVEQ7xR9GtJ36wdL57xyfHzkF"
-const adminAta = "DE9hDfuK47kNbs5mraXrJskUq3YYdLh2Bn6fCkJ8tX2E"
+const ProgramID = "EyTYjhzeaDUHYtUBSFEbLDmpQQLNaxj6jc9iUkr1fsrF"
+const icoMint = "ChsgrSeoT9FsNuibTGKdAHAwmjRWsnFWQ5WBPsxpB7RT"
+const programAta = "Ha7s8DXtushJyy3Nd4BGP2wrGnFSCd6oLca7CMbbNyVJ"
+const icoPda = "7V3QFsg7cPWSQRP3jReUZNnGyTRyAddGhMhV9jJVmjTY"
+const receiver = "4ZNG6jgpKLGodcdEw8xacv1MyHUKqboyrqz5o4UZ8Ngs"
+const admin = "4ZNG6jgpKLGodcdEw8xacv1MyHUKqboyrqz5o4UZ8Ngs"
+const adminAta = "AvQojqerW7r5doaWg7oCveRvhhSgG44SPTCexhn7xdsq"
 const keyData = "AiCUF1bFu7r3GhnapNSXQRXAk2nRTTKGLo3AbYSCbRVLjiLhPeotuEPYUvrHB4YRdybrxjTHn489moQNQ6c36U1"
 const decimals = 6
 
-module.exports = {ProgramID, icoMint, programAta, icoPda, admin, adminAta, keyData, decimals}
+module.exports = {ProgramID, icoMint, programAta, icoPda, receiver, admin, adminAta, keyData, decimals}

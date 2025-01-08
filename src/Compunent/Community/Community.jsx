@@ -57,7 +57,7 @@ function CommunitySection() {
           gap: 2,
         }}
       >
-        <a href="https://t.me/+dnAyb36G9xtlMzgx">
+        <a href="https://t.me/lmagcoin">
           <Button
             variant="contained"
             sx={{

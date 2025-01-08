@@ -20,10 +20,10 @@ window.Buffer = window.Buffer || Buffer;
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
 
-const devnet = true;
+const devnet = false;
 export const endpoint = devnet
   ? "https://api.devnet.solana.com"
-  : "https://solana-mainnet.g.alchemy.com/v2/jWM7-yAmW7jwK1HwFmoelDNwslFAhBh3";
+  : "https://solana-mainnet.g.alchemy.com/v2/sOfAQtuDh-PEBYZfyupDI_sQ3kgd9cOC";
 
 
 export const Wallet = ({ children }) => {

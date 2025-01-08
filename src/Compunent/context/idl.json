@@ -6,6 +6,7 @@
       "name": "initiateAndCreateProgramAta",
       "accounts": [
         { "name": "admin", "isMut": true, "isSigner": true },
+        { "name": "receiver", "isMut": false, "isSigner": false },
         { "name": "icoMint", "isMut": false, "isSigner": false },
         { "name": "adminAta", "isMut": true, "isSigner": false },
         { "name": "programAta", "isMut": true, "isSigner": false },
@@ -23,7 +24,7 @@
       "name": "buyWithSol",
       "accounts": [
         { "name": "buyer", "isMut": true, "isSigner": true },
-        { "name": "admin", "isMut": true, "isSigner": false },
+        { "name": "receiver", "isMut": true, "isSigner": false },
         { "name": "buyerAta", "isMut": true, "isSigner": false },
         { "name": "programAta", "isMut": true, "isSigner": false },
         { "name": "icoPda", "isMut": true, "isSigner": false },
@@ -63,7 +64,20 @@
         { "name": "icoPda", "isMut": true, "isSigner": false },
         { "name": "systemProgram", "isMut": false, "isSigner": false }
       ],
-      "args": [{ "name": "tokensPerLamport", "type": "u64" }]
+      "args": [
+        { "name": "tokensPerLamport", "type": "u64" },
+        { "name": "lamportsPerToken", "type": "u64" }
+      ]
+    },
+    {
+      "name": "changeReceiver",
+      "accounts": [
+        { "name": "admin", "isMut": true, "isSigner": true },
+        { "name": "receiver", "isMut": false, "isSigner": false },
+        { "name": "icoPda", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
     }
   ],
   "accounts": [
@@ -73,10 +87,14 @@
         "kind": "struct",
         "fields": [
           { "name": "admin", "type": "publicKey" },
+          { "name": "mint", "type": "publicKey" },
+          { "name": "receiver", "type": "publicKey" },
           { "name": "tokensPerLamport", "type": "u64" },
+          { "name": "lamportsPerToken", "type": "u64" },
           { "name": "tokensBalance", "type": "u64" },
           { "name": "totalSold", "type": "u64" },
           { "name": "lamportsReceived", "type": "u64" },
+          { "name": "decimals", "type": "u8" },
           { "name": "ataBump", "type": "u8" }
         ]
       }

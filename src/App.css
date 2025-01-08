@@ -68,7 +68,45 @@ ul li{
   font-family: "Lora, serif" !important;
   font-size: 18px;
 }
+.box{
+  border: 3px solid #e4b233;
+  background-color: #e4b2335a;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 15px 25px;
+  font-family: Zen Dots, sans-serif;
+  font-size: 20px;
+}
+.fonn{
+  font-size: 12px;
+}
+.flex{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.icon{
+  font-size: 42px;
+  font-family: Zen Dots, sans-serif;
+}
 @media (max-width: 1000px) { 
+  .box{
+    border: 3px solid #e4b233;
+    background-color: #e4b2335a;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 10px;
+    font-family: Zen Dots, sans-serif;
+    font-size: 12px;
+  }
+  .fonn{
+    font-size: 9px;
+  }
+  .icon{
+    font-size: 15px;
+    font-family: Zen Dots, sans-serif;
+  }
   .widthAbout{
     width: 100%;
     margin: auto;
