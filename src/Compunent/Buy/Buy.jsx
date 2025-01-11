@@ -796,10 +796,6 @@ function Buy() {
                 Further adjustments to the tokenomics will be determined by
                 community vote. We value your input!
               </p>
-              <li>
-                Official drop and other tokenomics is subject to a community
-                vote! Please join our telegram group by clicking the link below:
-              </li>
             </Box>
                 <a href="https://t.me/lmagcoin" style={{display: 'flex', justifyContent: 'center'}}>
                   <Button
